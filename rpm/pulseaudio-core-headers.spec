@@ -1,3 +1,5 @@
+%define pulsemajorminor %{expand:%(echo '%{version}' | cut -d. -f1,2)}
+
 Name:       pulseaudio-core-headers
 Summary:    PulseAudio Private Headers
 Version:    13.99.1
@@ -8,9 +10,7 @@ URL:        https://github.com/nemomobile-ux/pulseaudio-core-headers
 Source0:    %{name}-%{version}.tar.xz
 Source1:    pulsecore.pc.in
 BuildArch:  noarch
-Requires:   pkgconfig(libpulse) >= %{version}
-
-%define pulsemajorminor %{expand:%(echo '%{version}' | cut -d. -f1,2)}
+Requires:   pkgconfig(libpulse) >= %{pulsemajorminor}
 
 %description
 PulseAudio Core headers required by modules built out of tree.
