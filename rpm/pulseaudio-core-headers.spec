@@ -21,6 +21,7 @@ PulseAudio Core headers required by modules built out of tree.
 
 %build
 sed -e s/@PA_MAJORMINOR@/%{pulsemajorminor}/g rpm/pulsecore.pc.in | \
+    sed -e s/@ARCH_LIBDIR@/%{_libdir}/g | \
     sed -e s/@PA_FULL@/%{version}/g  > pulsecore.pc
 
 %install

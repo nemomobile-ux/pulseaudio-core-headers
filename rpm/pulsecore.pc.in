@@ -1,5 +1,5 @@
 prefix=/usr
-libdir=/usr/lib
+libdir=@ARCH_LIBDIR@
 includedir=${prefix}/include
 ver=@PA_FULL@
 
