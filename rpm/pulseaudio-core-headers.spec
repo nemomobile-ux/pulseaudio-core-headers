@@ -9,8 +9,9 @@ License:    LGPLv2+
 URL:        https://github.com/nemomobile-ux/pulseaudio-core-headers
 Source0:    %{name}-%{version}.tar.xz
 Source1:    pulsecore.pc.in
-BuildArch:  noarch
 Requires:   pkgconfig(libpulse) >= %{pulsemajorminor}
+
+%global debug_package %{nil}
 
 %description
 PulseAudio Core headers required by modules built out of tree.
@@ -20,6 +21,7 @@ PulseAudio Core headers required by modules built out of tree.
 
 %build
 sed -e s/@PA_MAJORMINOR@/%{pulsemajorminor}/g rpm/pulsecore.pc.in | \
+    sed -e s:@ARCH_LIBDIR@:%{_libdir}:g | \
     sed -e s/@PA_FULL@/%{version}/g  > pulsecore.pc
 
 %install
