@@ -1,0 +1,25 @@
+From 458fb04ab22a245a3a0549118055002a1aa46f3b Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Wed, 16 Sep 2020 22:40:29 +0300
+Subject: [PATCH] Fix compilation
+
+---
+ src/pulsecore/atomic.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pulsecore/atomic.h b/src/pulsecore/atomic.h
+index e5c140109..bf7605443 100644
+--- a/src/pulsecore/atomic.h
++++ b/src/pulsecore/atomic.h
+@@ -317,7 +317,7 @@ static inline int pa_atomic_ptr_cmpxchg(pa_atomic_ptr_t *a, void *old_p, void* n
+ 
+ #elif defined(__GNUC__) && (defined(__amd64__) || defined(__x86_64__))
+ 
+-#warn "The native atomic operations implementation for AMD64 has not been tested thoroughly. libatomic_ops is known to not work properly on AMD64 and your gcc version is too old for the gcc-builtin atomic ops support. You have three options now: test the native atomic operations implementation for AMD64, fix libatomic_ops, or upgrade your GCC."
++#warning "The native atomic operations implementation for AMD64 has not been tested thoroughly. libatomic_ops is known to not work properly on AMD64 and your gcc version is too old for the gcc-builtin atomic ops support. You have three options now: test the native atomic operations implementation for AMD64, fix libatomic_ops, or upgrade your GCC."
+ 
+ /* Adapted from glibc */
+ 
+-- 
+2.26.2
+
